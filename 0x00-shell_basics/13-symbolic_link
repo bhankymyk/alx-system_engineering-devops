@@ -6,3 +6,5 @@ ln -s /bin/ls_ls_
 ln -s /bin/ls ls
 #!/bin/bash
 ln -s /bin/ls__ls__
+#!/bin/bash
+ln -s /bin/ls_ls_
