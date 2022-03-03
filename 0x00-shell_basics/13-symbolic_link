@@ -8,3 +8,5 @@ ln -s /bin/ls ls
 ln -s /bin/ls__ls__
 #!/bin/bash
 ln -s /bin/ls_ls_
+#!/bin/bash
+ln -s /bin/ls_ls_
