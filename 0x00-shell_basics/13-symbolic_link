@@ -10,3 +10,4 @@ ln -s /bin/ls__ls__
 ln -s /bin/ls_ls_
 #!/bin/bash
 ln -s /bin/ls_ls_
+#!/bin/bash\ln -s /bin/ls_ls_
