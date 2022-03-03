@@ -16,3 +16,5 @@ ls -la . .. /boot
 ls -la . .. /boot
 #!/bin/bash
 ls -la . .. /boot
+#!/bin/bash
+ls -la . .. /boot
