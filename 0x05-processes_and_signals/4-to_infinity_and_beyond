@@ -3,6 +3,6 @@
 
 while ((1==1))
 do
-echo "displays To infinity and beyond"
-sleep 2
+            echo "To infinity and beyond"
+            sleep 2
 done
