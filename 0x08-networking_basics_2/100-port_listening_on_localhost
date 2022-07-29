@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
 #This script shows port
+sudo nc -1 -k 98
