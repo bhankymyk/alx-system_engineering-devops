@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #Bash Script to initialize apache server to run on a container
 
-echo "ServerName localhost" >> /etc/apache2.config
+echo "ServerName localhost" >> /etc/apache2.conf
 service apache2 start
