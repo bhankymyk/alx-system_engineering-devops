@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #Bash Script to initialize apache server to run on a container
 
-/etc/init.d/apache2
+/etc/init.d/apache2 start
