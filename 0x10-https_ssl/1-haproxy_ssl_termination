@@ -1,3 +1,4 @@
+  GNU nano 4.8                                                                          haproxy.cfg
 global
         log /dev/log    local0
         log /dev/log    local1 notice
@@ -33,14 +34,16 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend my_frontend
-        bind *:80
-        bind *:443 ssl crt /etc/letsencrypt/live/nanodesign.tech/fullchain.pem
-        mode http
-        default_backend my_backend_1
 
-backend my_backend_1
+frontend firstbalance
+        bind *:80
+        option forwardfor
+        default_backend webservers
+
+backend webservers
         balance roundrobin
-        server 914-web-01 35.196.96.41:80 check
-        server 914-web-02 3.234.218.189:80 check
-        
+        server webserver1 Your-Webserver1-IP:80
+        server webserver2 Your-Webserver2-IP:80
+        server webserver1 Your-Webserver1-IP:80 check
+        server webserver2 Your-Webserver2-IP:80 check
+        option httpchk
