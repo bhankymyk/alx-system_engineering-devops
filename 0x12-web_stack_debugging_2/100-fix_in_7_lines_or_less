@@ -1,4 +1,4 @@
-#!/usr/bin/bash env
+#!/usr/bin/env bash
 #Using what i did for task #1, but 7 lines or less.
 pkill -f apache2
 chmod 644 /etc/nginx/nginx.conf
