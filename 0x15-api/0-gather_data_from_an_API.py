@@ -8,21 +8,27 @@ import requests
 from sys import argv
 
 if __name__ == '__main__':
-    url = "https://jsonplaceholder.typicode.com/"
-    user = requests.get(url + "users/{}".format(argv[1])).json()
-    todo_list = requests.get(url + "todo", params={"userId": argv[1]}).json()
+    user_id = argv[1]
 
-    EMPLOYEE_NAME = user.get('name')
-    TASK_TITLE = []
-    NUMBER_OF_DONE_TASKS = 0
+    todos = requests.get(
+        "http://jsonplaceholder.typicode.com/todos?userId={}".format(
+            user_id))
+    user = requests.get(
+        "http://jsonplaceholder.typicode.com/users/{}".format(
+            user_id))
 
-    for task in todo_list:
-        if task.get('completed') is True:
-            TASK_TITLE.append(task.get('title'))
-            NUMBER_OF_DONE_TASKS += 1
-    TOTAL_NUMBER_OF_TASKS = len(todo_list)
-    print("Employee {} is done with task({}/{}):")
-    format(EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, TOTAL_NUMBER_OF_TASKS)
+    if len(user.json()):
+        total = 0
+        completed = 0
+        tasks_list = []
+        for tarea in todos.json():
+            total += 1
+            if tarea.get("completed") is True:
+                completed += 1
+                tasks_list.append(tarea.get("title"))
 
-    for t in TASK_TITLE:
-        print("\task {}".format(t))
+        print(
+            "Employee {} is done with tasks({}/{}):".format(
+                user.json().get("name"), completed, total))
+        for task in tasks_list:
+            print("\t {}".format(task))
