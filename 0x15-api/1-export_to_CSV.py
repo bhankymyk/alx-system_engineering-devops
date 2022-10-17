@@ -5,25 +5,18 @@ This script to export task done in task #0 to CSV format
 
 import csv
 import requests
-from sys import orig_argv
+from sys import argv
 
 if __name__ == "__main__":
-    user_id = argv[1]
+    url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(url + "users/{}".format(argv[1])).json()
+    todo_list = requests.get(url + "todos", params={"userId": argv[1]}).json()
+    USER_ID = argv[1]
+    USERNAME = user.get('username')
 
-    todos = requests.get(
-        "http://jsonplaceholder.typicode.com/todos?userId={}".format(
-            user_id))
-    user = requests.get(
-        "http://jsonplaceholder.typicode.com/users/{}".format(
-            user_id))
-
-    with open('{}.csv'.format(user_id), "w") as output:
-        writer = csv.writer(output, delimiter=',', quoting=csv.QUOTE_ALL)
-        for tarea in todos.json():
-            data = [
-                user.json().get('id'),
-                user.json().get('username'),
-                tarea.get('completed'),
-                tarea.get('title')
-            ]
-            writer.writerow(data)
+    with open("{}.csv".format(USER_ID), 'w', newline='') as csvfile:
+        user_writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        for task in todo_list:
+            user_writer.writerow([int(USER_ID), user.get('username'),
+                                 task.get('completed'),
+                                 task.get('title')])
