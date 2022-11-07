@@ -11,7 +11,7 @@ It was reported that the  CalorieMealPlanner platform was returning 500 Error on
 •	9:55 PM: CalorieMealPlanner start working 100% <br>
 
 
-<h1>Roor=t Cause</h1><br>
+<h1>Root Cause</h1><br>
 The web application(CalorieMealPlanner) platform is served by 2 ubuntu cloud servers. The master server web-01 was connected to serve all requests, and it stopped functioning due to memory outage as a results of so many requests because during a previous test, the client server web-02 was disconnected temporarily for testing and was not connected to the load balancer afterwards
 
 <h1>Corrective and preventive measure</h1> <br>
